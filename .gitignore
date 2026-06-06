@@ -1,0 +1,18 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+
+# Environment files
+.env
+
+# Data and cache
+*.db
+*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db

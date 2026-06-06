@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    poppler-utils \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY backend_requirements.txt .
+
+RUN pip install \
+    --no-cache-dir \
+    --default-timeout=1000 \
+    -r backend_requirements.txt
+
+COPY app ./app
+
+CMD ["uvicorn","app.main:app","--host","0.0.0.0","--port","8000"]
